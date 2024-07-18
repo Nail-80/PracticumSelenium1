@@ -71,9 +71,6 @@ public class PracticeFormPage {
 
 
 
-
-
-
     public void inputFirstName(String firstName) {
         firstNameField.sendKeys(firstName);
     }
