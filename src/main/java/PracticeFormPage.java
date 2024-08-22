@@ -1,9 +1,12 @@
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 public class PracticeFormPage {
@@ -16,7 +19,6 @@ public class PracticeFormPage {
         this.driver=driver;
     }
 
-    //todo сделать разные локаторы
     @FindBy(id = "firstName")
     private WebElement firstNameField;
 

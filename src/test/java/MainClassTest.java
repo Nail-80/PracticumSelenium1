@@ -1,3 +1,5 @@
+import io.qameta.allure.Attachment;
+import io.qameta.allure.Step;
 import org.junit.*;
 import org.openqa.selenium.PageLoadStrategy;
 import org.openqa.selenium.WebDriver;
@@ -10,6 +12,8 @@ import java.time.Month;
 import java.util.List;
 import java.util.Locale;
 import java.util.Random;
+
+import static io.qameta.allure.Allure.step;
 
 public class MainClassTest {
 
@@ -32,10 +36,10 @@ public class MainClassTest {
     private static String currentAddress="26 Floor Raj Kapoor Bilding,\nMumbai Road";
     private static String stateString;        // random
     private static String cityString;         // random
-
+    //todo static
 
     @BeforeClass
-    public static void setUp() {
+    public static void setUpClass() {
         //System.setProperty("webdriver.xxx.driver","xxx");
         ChromeOptions opt = new ChromeOptions();
         opt.setPageLoadStrategy(PageLoadStrategy.EAGER);
@@ -74,10 +78,11 @@ public class MainClassTest {
         int curSubjectsCount=0;
         while (curSubjectsCount<maxSubjectsCount) {
             String letter = String.valueOf(letters.charAt(random.nextInt(letters.length())));
-            System.out.println(letter);
             practiceFormPage.inputSubjects(letter);
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
             int subjectsOptionSize = practiceFormPage.getSubjectsOptionSize();
-            if(subjectsOptionSize>0) {
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+             if(subjectsOptionSize>0) {
                 int choiceSubjects = random.nextInt(subjectsOptionSize);
                 subjects = (subjects!=null?subjects+", ":"") + practiceFormPage.getSubjectsOptionText(choiceSubjects);
                 practiceFormPage.setSubjectsOption(choiceSubjects);
@@ -113,7 +118,6 @@ public class MainClassTest {
     public static void tearDown(){
         modalPage.clickCloseButton();
         driver.quit();
-        //driver.close();
     }
 
     @Test
@@ -128,12 +132,15 @@ public class MainClassTest {
     }
 
     @Test
+    @Attachment
     public void testEmail(){
         Assert.assertEquals(email,modalPage.getEmailValueText());
     }
 
     @Test
+    @Step
     public void testGender(){
+        step("sdkjchskjdnck");
         Assert.assertEquals(gender,modalPage.getGenderValueText());
     }
 
