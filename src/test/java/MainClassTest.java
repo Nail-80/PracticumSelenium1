@@ -1,5 +1,5 @@
-import io.qameta.allure.Attachment;
-import io.qameta.allure.Step;
+//import io.qameta.allure.Attachment;
+//import io.qameta.allure.Step;
 import org.junit.*;
 import org.openqa.selenium.PageLoadStrategy;
 import org.openqa.selenium.WebDriver;
@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Random;
 
-import static io.qameta.allure.Allure.step;
+//import static io.qameta.allure.Allure.step;
 
 public class MainClassTest {
 
@@ -32,7 +32,7 @@ public class MainClassTest {
     private static String subjects;           // random
     private static int maxSubjectsCount=5;
     private static String hobbies;            // random
-    private static String pathPictureFile="C:\\Users\\Default\\Pictures\\gift.png";
+    private static String pathPictureFile="C:\\gift.png";
     private static String currentAddress="26 Floor Raj Kapoor Bilding,\nMumbai Road";
     private static String stateString;        // random
     private static String cityString;         // random
@@ -132,15 +132,15 @@ public class MainClassTest {
     }
 
     @Test
-    @Attachment
+//    @Attachment
     public void testEmail(){
         Assert.assertEquals(email,modalPage.getEmailValueText());
     }
 
     @Test
-    @Step
+//    @Step
     public void testGender(){
-        step("sdkjchskjdnck");
+//        step("sdkjchskjdnck");
         Assert.assertEquals(gender,modalPage.getGenderValueText());
     }
 
