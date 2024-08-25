@@ -9,27 +9,21 @@ public class MainClass {
 
     public static <WebElements> void main(String[] args) {
 
-//        System.setProperty("webdriver.xxx.driver","xxx");
+        //System.setProperty("webdriver.xxx.driver","xxx");
+/*
         ChromeOptions opt = new ChromeOptions();
         opt.setPageLoadStrategy(PageLoadStrategy.EAGER);
         WebDriver driver = new ChromeDriver(opt);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        //driver.manage().window().maximize();
+        driver.manage().window().maximize();
         driver.get("https://demoqa.com/automation-practice-form/");
 
-        //PracticeFormPage practiceFormPage = new PracticeFormPage(driver);
-
         Random random = new Random();
-
         WebElement elementFirstName_id = driver.findElement(By.id("firstName"));
         elementFirstName_id.sendKeys("Alexey");
         WebElement elementFirstName_css = driver.findElement(By.cssSelector("div#userName-wrapper>div.col-sm-6 >input#firstName"));
         WebElement elementFirstName_xPath = driver.findElement(By.xpath("//form[@id='userForm']//input[@id='firstName']"));
-
-        WebElement elementLastName_xPath = driver.findElement(By.xpath("//form[@id='userForm']//input[@id='lastName']"));
-        elementLastName_xPath.sendKeys("Petrov");
-
-        //        driver.quit();
-
+        //driver.quit();
+*/
     }
 }

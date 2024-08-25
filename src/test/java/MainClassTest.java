@@ -1,6 +1,5 @@
-//import io.qameta.allure.Attachment;
-//import io.qameta.allure.Step;
 import org.junit.*;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.PageLoadStrategy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -13,11 +12,11 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Random;
 
-//import static io.qameta.allure.Allure.step;
 
 public class MainClassTest {
 
     private static WebDriver driver;
+    private static JavascriptExecutor js;
     private static PracticeFormPage practiceFormPage;
     private static ModalPage modalPage;
 
@@ -36,7 +35,7 @@ public class MainClassTest {
     private static String currentAddress="26 Floor Raj Kapoor Bilding,\nMumbai Road";
     private static String stateString;        // random
     private static String cityString;         // random
-    //todo static
+
 
     @BeforeClass
     public static void setUpClass() {
@@ -47,6 +46,7 @@ public class MainClassTest {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.manage().window().maximize();
         driver.get("https://demoqa.com/automation-practice-form/");
+        js = (JavascriptExecutor) driver;
         practiceFormPage = new PracticeFormPage(driver);
 
         Random random = new Random();
@@ -74,6 +74,7 @@ public class MainClassTest {
         birthdayDay = random.nextInt( Month.of(birthdayMonth).maxLength() ) + 1;
         practiceFormPage.setDayElement(birthdayDay);
 
+        js.executeScript("window.scrollTo(0,document.body.scrollHeight)");
         String letters = "qwertyuiopasdfghjklzxcvbnm";
         int curSubjectsCount=0;
         while (curSubjectsCount<maxSubjectsCount) {
@@ -116,7 +117,7 @@ public class MainClassTest {
 
     @AfterClass
     public static void tearDown(){
-        modalPage.clickCloseButton();
+        if (modalPage!=null) modalPage.clickCloseButton();
         driver.quit();
     }
 
@@ -132,15 +133,12 @@ public class MainClassTest {
     }
 
     @Test
-//    @Attachment
     public void testEmail(){
         Assert.assertEquals(email,modalPage.getEmailValueText());
     }
 
     @Test
-//    @Step
     public void testGender(){
-//        step("sdkjchskjdnck");
         Assert.assertEquals(gender,modalPage.getGenderValueText());
     }
 

@@ -113,7 +113,6 @@ public class PracticeFormPage {
         birthdayMonthString = monthsOption.get(i-1).getAttribute("text");
     }
 
-    //todo подумать как переделать на опциональное
     public void setDayElement(int i){
         WebElement dayElement = driver.findElement(By.xpath("//form[@id='userForm']//div[@id='dateOfBirth']//div[@class='react-datepicker__week']//div[text()='"+i+"'][contains(@aria-label,'"+birthdayMonthString+"')]"));
         dayElement.click();
